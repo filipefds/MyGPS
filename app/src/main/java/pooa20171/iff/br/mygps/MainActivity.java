@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+//                Teste - Buscar endereço da coordenada
                 double latitude = -21.762544;
                 double longitude = -41.337933;
                 try {
