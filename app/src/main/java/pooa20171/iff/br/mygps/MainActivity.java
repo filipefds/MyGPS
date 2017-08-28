@@ -1,5 +1,7 @@
 package pooa20171.iff.br.mygps;
 
+import android.*;
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private TextView txtLatitude, txtLongitude, txtInfo;
     private GoogleApiClient mGoogleApiClient;
 
+    String[] permissoes = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         txtLatitude = (TextView) findViewById(R.id.txtLatitude);
         txtLongitude = (TextView) findViewById(R.id.txtLongitude);
+
+        PermissionUtils.validate(this, 0, permissoes);
 
         callConnection();
 
