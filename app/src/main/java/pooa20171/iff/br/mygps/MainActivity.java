@@ -23,6 +23,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txtLatitude = (TextView) findViewById(R.id.txtLatitude);
+        txtLongitude = (TextView) findViewById(R.id.txtLongitude);
+
+        callConnection();
+
+    }
+
+    private synchronized void callConnection() {
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addOnConnectionFailedListener(this)
+                .addConnectionCallbacks(this)
+                .addApi(LocationServices.API)
+                .build();
+        mGoogleApiClient.connect();
     }
 
     @Override
